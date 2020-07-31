@@ -8,7 +8,7 @@
     "type-check": "tsc --noEmit",
     "build": "webpack --config webpack/webpack.prod.js",
     "build:dev": "webpack --config webpack/webpack.dev.js",
-    "start": "yarn build:dev && node dist/bundle.js ./temp",
+    "start": "yarn build:dev && node dist/bundle.js install-dependencies",
     "start:ts": "yarn build:dev && node dist/bundle.js ./temp-ts/",
     "start:js": "yarn build:dev && node dist/bundle.js ./temp-js/"
   },
