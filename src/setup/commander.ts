@@ -1,19 +1,18 @@
 import { program } from 'commander'
 
-let determinedAction: string
+import { ProgramArgs, OperationFunctionName } from '@/interfaces'
 
-export interface ProgramArgs {
-  action: string
-  pathOfTemplate?: string
-}
+let determinedAction: OperationFunctionName
 
 const initializeProgram = (): ProgramArgs => {
   program
     .arguments('<actionToTake>')
-    .action((actionToTake: string) => {
+    .action((actionToTake: OperationFunctionName) => {
       determinedAction = actionToTake
     })
     .version('0.0.1')
+    .option('--file-path <type>', 'Relative file path to begin the process')
+    .option('-c, --command <type>', 'Command that should be executed recursively')
 
   program.parse(process.argv)
 
@@ -21,6 +20,7 @@ const initializeProgram = (): ProgramArgs => {
 
   return {
     action: determinedAction,
+    flags: program.opts(),
   }
 }
 

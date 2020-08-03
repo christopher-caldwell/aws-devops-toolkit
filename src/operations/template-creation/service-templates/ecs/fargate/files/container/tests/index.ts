@@ -1,7 +1,7 @@
 import fs from 'fs-extra'
 import path from 'path'
 
-import eslintrc from '@/template-creation/service-templates/ecs/fargate/files/lambdas/src/tests/files/eslintrc'
+import eslintrc from '@/operations/template-creation/service-templates/ecs/fargate/files/lambdas/src/tests/files/eslintrc'
 import generateJestConfig from './jestConfig'
 import globalSetup from './globalSetup'
 import generateDbTests from './db'

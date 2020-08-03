@@ -1,8 +1,9 @@
 import path from 'path'
 import fs from 'fs'
 import childProcess from 'child_process'
+import colors from 'colors'
 
-import logger from '@/util/'
+import { RecursiveCommandArgs } from '@/interfaces'
 
 const executeCommand = (pathToExecuteCommand: string, commandToExec: string): void => {
   childProcess.execSync(commandToExec, { cwd: pathToExecuteCommand, env: process.env, stdio: 'inherit' })
@@ -20,9 +21,9 @@ const runCommandRecursive = (rootPath: string, targetFolder: string, commandToEx
   const hasPackageJson = fs.existsSync(path.join(targetFolder, 'package.json'))
 
   if (hasPackageJson) {
-    logger.info('===================================================================')
-    logger.info(`Performing "${commandToExecute}" inside ${path.relative(rootPath, targetFolder)}/`)
-    logger.info('===================================================================')
+    console.log(colors.cyan('==================================================================='))
+    console.log(colors.cyan(`Performing "${commandToExecute}" inside ${path.relative(rootPath, targetFolder)}/`))
+    console.log(colors.cyan('==================================================================='))
 
     executeCommand(targetFolder, commandToExecute)
   }
@@ -37,9 +38,10 @@ const runCommandRecursive = (rootPath: string, targetFolder: string, commandToEx
  * @param commandToExec
  * @param relativePathFromCallingLocation This is the path relative to where in the file tree this will be executed
  */
-const main = (commandToExec: string, relativePathFromCallingLocation: string): void => {
-  const rootPath = path.resolve(process.cwd(), relativePathFromCallingLocation)
-  runCommandRecursive(rootPath, rootPath, commandToExec)
+const main = async (args?: Record<string, unknown>): Promise<void> => {
+  const { filePath, command } = { ...args } as RecursiveCommandArgs
+  const rootPath = path.resolve(process.cwd(), filePath)
+  runCommandRecursive(rootPath, rootPath, command)
 }
 
 export default main

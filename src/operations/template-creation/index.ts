@@ -4,13 +4,12 @@ import fs from 'fs-extra'
 import path from 'path'
 
 import { askInitialPrompt, askQuestions, AskQuestionsOptions } from '@/setup/askQuestions'
-import determineWhichTemplateToWrite from '@/template-creation/service-templates'
+import determineWhichTemplateToWrite from '@/operations/template-creation/service-templates'
+import { TemplateCreationArgs } from '@/interfaces'
 
-export interface TemplateCreationArgs {
-  pathOfTemplate: string
-}
-
-const templateCreation = async ({ pathOfTemplate }: TemplateCreationArgs): Promise<void> => {
+const templateCreation = async (args?: Record<string, unknown>): Promise<void> => {
+  const templateCreationArgs = { ...args } as TemplateCreationArgs
+  const pathOfTemplate = templateCreationArgs?.pathOfTemplate as string
   let destinationPath: string | undefined
   try {
     destinationPath = path.resolve(process.cwd(), pathOfTemplate)

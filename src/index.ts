@@ -1,29 +1,23 @@
 // import childProcess from 'child_process'
 import colors from 'colors'
 
-import templateCreation from '@/template-creation/'
+import templateCreation from '@/operations/template-creation'
+import installDependencies from '@/operations/installDependencies'
 import { OperationFunctionMap } from '@/interfaces'
 import commander from './setup/commander'
 
-
 const functionMap: OperationFunctionMap = {
   'template-creation': templateCreation,
+  'install-dependencies': installDependencies,
 }
 
 /**
- * Collects data from various sources and returns it in the expected DynamoDB format
+ * Runs an operation
  */
-const collectSourceData = async (DbClient: PoolClient, dataSourceArgs: DataSourceArgs) => {
-  const functionToExecute = dataSourceArgs.dataSource
-  return await functionMap[functionToExecute](DbClient, dataSourceArgs)
-}
-
-export default collectSourceData
-
 const main = async () => {
   try {
-    const actions = commander()
-    console.log('actions', actions)
+    const programArgs = commander()
+    await functionMap[programArgs.action](programArgs.flags)
   } catch (error) {
     console.error(colors.red('An error occurred.'), error)
   }
