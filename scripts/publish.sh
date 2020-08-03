@@ -25,7 +25,7 @@ if [ $? != 0 ]; then
   exit 1
 fi
 
-node ./scripts/writeBinForExecution.js
+ts-node scripts/writeBinForExecution.ts
 
 printf "\n\n$BICyan$(echo Publishing new version..)$Color_Off"
 printf "\n\n"

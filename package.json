@@ -10,7 +10,8 @@
     "build:dev": "webpack --config webpack/webpack.dev.js",
     "start": "yarn build:dev && node dist/bundle.js install-dependencies",
     "start:ts": "yarn build:dev && node dist/bundle.js ./temp-ts/",
-    "start:js": "yarn build:dev && node dist/bundle.js ./temp-js/"
+    "start:js": "yarn build:dev && node dist/bundle.js ./temp-js/",
+    "release": "sh scripts/publish.sh"
   },
   "bin": {
     "aws-devops-toolkit": "./dist/index.js"
@@ -18,10 +19,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/christopher-caldwell/aws-devops-toolkit.git"
   },
   "peerDependencies": {
-    "aws-sdk": "^2.683.0"
+    "aws-sdk": "^2.725.0"
   },
   "files": [
     "dist"
@@ -50,6 +51,7 @@
     "eslint-import-resolver-typescript": "^2.0.0",
     "eslint-plugin-import": "^2.21.2",
     "ts-loader": "^7.0.5",
+    "ts-node": "^8.10.2",
     "typescript": "^3.9.5",
     "webpack": "^4.43.0",
     "webpack-bundle-analyzer": "^3.8.0",
