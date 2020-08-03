@@ -1,7 +1,7 @@
 {
   "name": "aws-devops-toolkit",
   "version": "0.0.1",
-  "description": "Tool to consolidated various AWS DevOps scripts under one service",
+  "description": "General toolkit for various operations related to DevOps with AWS as your cloud provider",
   "main": "dist/bundle.js",
   "scripts": {
     "lint": "eslint src/ --ext .js,.ts",

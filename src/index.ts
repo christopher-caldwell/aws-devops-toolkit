@@ -2,13 +2,13 @@
 import colors from 'colors'
 
 import templateCreation from '@/operations/template-creation'
-import installDependencies from '@/operations/installDependencies'
+import recursiveCommand from '@/operations/recursiveCommand'
 import { OperationFunctionMap } from '@/interfaces'
 import commander from './setup/commander'
 
 const functionMap: OperationFunctionMap = {
   'template-creation': templateCreation,
-  'install-dependencies': installDependencies,
+  'recursive-command': recursiveCommand,
 }
 
 /**

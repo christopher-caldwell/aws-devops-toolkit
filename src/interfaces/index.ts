@@ -1,4 +1,4 @@
-export type OperationFunctionName = 'template-creation' | 'install-dependencies'
+export type OperationFunctionName = 'template-creation' | 'recursive-command'
 
 export interface TemplateCreationArgs {
   pathOfTemplate: string
@@ -8,7 +8,7 @@ export type OperationFunction = (args?: Record<string, unknown>) => Promise<void
 
 export interface OperationFunctionMap {
   'template-creation': OperationFunction
-  'install-dependencies': OperationFunction
+  'recursive-command': OperationFunction
 }
 
 export interface ProgramArgs {
