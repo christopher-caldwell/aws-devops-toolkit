@@ -22,7 +22,7 @@
     "url": "https://github.com/christopher-caldwell/aws-devops-toolkit.git"
   },
   "peerDependencies": {
-    "aws-sdk": "^2.725.0"
+    "aws-sdk": "^2.726.0"
   },
   "files": [
     "dist"
@@ -31,6 +31,7 @@
   "dependencies": {
     "colors": "^1.4.0",
     "commander": "^5.1.0",
+    "common-aws-actions": "^0.0.29",
     "eslint": "^7.2.0",
     "fs-extra": "^9.0.1",
     "inquirer": "^7.2.0"
@@ -44,6 +45,7 @@
     "@types/node": "^14.0.13",
     "@typescript-eslint/eslint-plugin": "^3.3.0",
     "@typescript-eslint/parser": "^3.3.0",
+    "aws-sdk": "^2.726.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-add-module-exports": "^1.0.2",
     "babel-plugin-module-resolver": "^4.0.0",
