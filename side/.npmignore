@@ -1,0 +1,9 @@
+*.json
+src
+scripts
+generated-docs
+badges
+*.js
+webpack
+node_modules
+build
